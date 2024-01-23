@@ -1,0 +1,92 @@
+[
+  {
+    "username": "pierre.damore",
+    "email": "chance.bergnaum@yahoo.com",
+    "password": "8fgmrojpojewcup",
+    "balance": 10000,
+    "id": "45e02a9a-3069-455b-88bc-ec3d036b2437",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "ronny.smitham",
+    "email": "ruben.will@hotmail.com",
+    "password": "i7ime7mbpdf1",
+    "balance": 10000,
+    "id": "b07a2bb6-0b8e-435a-9e80-795a291ef515",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "chantay.satterfield",
+    "email": "ayako.maggio@yahoo.com",
+    "password": "321s93rk",
+    "balance": 10000,
+    "id": "482faa9b-5d14-4711-83c0-6b08b86ad404",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "emmaline.heidenreich",
+    "email": "casimira.boehm@hotmail.com",
+    "password": "hh75afk1",
+    "balance": 10000,
+    "id": "fdb36ae9-d5f0-4b37-9d23-d156198ebce3",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "dorthey.boyer",
+    "email": "catina.donnelly@yahoo.com",
+    "password": "z1qvftiu4al5c",
+    "balance": 10000,
+    "id": "a197e850-0572-47a5-a713-98ec4f816b9b",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "keturah.johns",
+    "email": "kory.runolfsdottir@hotmail.com",
+    "password": "qf1cgtn8p8u20",
+    "balance": 10000,
+    "id": "8be72dd1-33a3-4dc7-abf1-ea18ba01ba1c",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "wm.schoen",
+    "email": "magen.hyatt@yahoo.com",
+    "password": "yuscuuc9p9q",
+    "balance": 10000,
+    "id": "7f6562b0-9501-4531-8bcf-f09db91fd143",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "len.bashirian",
+    "email": "spencer.paucek@yahoo.com",
+    "password": "j4d0de8boj23e",
+    "balance": 10000,
+    "id": "4ae18bab-82c3-4a0d-b51b-4e52fa55b589",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "benny.homenick",
+    "email": "marlon.zboncak@yahoo.com",
+    "password": "9amxz4hq9",
+    "balance": 10000,
+    "id": "ceafc8ab-7050-48d0-acab-314327a6073c",
+    "errors": [],
+    "isValid": false
+  },
+  {
+    "username": "anabel.legros",
+    "email": "herb.baumbach@hotmail.com",
+    "password": "s984xs9l18itis",
+    "balance": 10000,
+    "id": "267827a0-4a4e-4771-af8b-8cedb31665a2",
+    "errors": [],
+    "isValid": false
+  }
+]

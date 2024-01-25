@@ -1,5 +1,8 @@
 
-]
-java:S1854";Remove this useless assignment to local variable "scanner".(ù ƒ‘üÿÿÿÿ8ıº’¶Ó1
-N
-java:S1481",Remove this unused "scanner" local variable.(ù ƒ‘üÿÿÿÿ8€»’¶Ó1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8‚åÒ…Ô1
+M
+java:S1128
+"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ƒåÒ…Ô1
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8ƒåÒ…Ô1

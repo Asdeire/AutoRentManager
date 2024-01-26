@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public abstract class Entity {
     protected final UUID id;
-    protected List<String> errors;
-    protected boolean isValid;
+    protected transient List<String> errors;
+    protected transient boolean isValid;
 
     protected Entity(UUID id) {
         errors = new ArrayList<>();

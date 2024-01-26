@@ -1,8 +1,17 @@
 
-M
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8‚åÒ…Ô1
-M
+X	java:S125"<This block of commented-out lines of code should be removed.(¶†Ñ’8€¦Ö“Ô1
+X	java:S125;"<This block of commented-out lines of code should be removed.(“âæ8‚¦Ö“Ô1
+X	java:S125H"<This block of commented-out lines of code should be removed.(èÑŠ¤8‚¦Ö“Ô1
+T
+java:S1128	"7Remove this unused import 'com.github.javafaker.Faker'.(û¹ªÕ8³ ô“Ô1
+R
 java:S1128
-"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8ƒåÒ…Ô1
-P
-java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8ƒåÒ…Ô1
+"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8³ ô“Ô1
+J
+java:S1128".Remove this unused import 'java.util.HashSet'.(Ê‚êX8³ ô“Ô1
+k
+java:S1128"NRemove this unused import 'com.asdeire.autorent.persistence.entity.impl.User'.(À†Îè8³ ô“Ô1
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8³ ô“Ô1
+M
+java:S1128"+Remove this unused import 'java.util.UUID'.(ÀãÄ£úÿÿÿÿ8³ ô“Ô1

@@ -18,7 +18,7 @@ public class UserJsonRepositoryImpl
     }
 
     @Override
-    public Optional<User> findByUserName(String username) {
+    public Optional<User> findByUsername(String username) {
         return entities.stream().filter(u -> u.getUsername().equals(username)).findFirst();
     }
 

@@ -12,8 +12,6 @@ n
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-H
-.idea/libraries/libs.xml,a\1\a10844effdce1360fd23127a891f723b8a168991
 C
 AutoRentManager.iml,3\1\3103cf83e28bbf48acc26d466d15d0cb6be31183
 B
@@ -60,3 +58,19 @@ l
 <src/com/asdeire/autorent/persistence/entity/impl/Review.java,7\1\714ced8b3d9245790ff11d6f671450edc4cb88c4
 „
 Tsrc/com/asdeire/autorent/persistence/repository/impl/json/JsonRepositoryFactory.java,0\c\0cc4017c6aea72ad0e6d90b324125f676b2e21a2
+v
+Fsrc/com/asdeire/autorent/domain/exception/EntityNotFoundException.java,9\3\931fc6af5862ae4116edee4a6bae378957a0ece7
+n
+>src/com/asdeire/autorent/domain/exception/SignUpException.java,8\9\892528b3e81c100022a8390f4994546a7cf2c87f
+w
+Gsrc/com/asdeire/autorent/domain/exception/UserAlreadyAuthException.java,1\8\181e3095bea32ef333ef9e000d260156206fb286
+l
+<src/com/asdeire/autorent/domain/exception/AuthException.java,d\8\d8fa99719dbb21e5e19f70404ee7446f3d8d5029
+\
+,src/com/asdeire/autorent/domain/Service.java,a\4\a4ad1f262dea350bf3e3e672f60ddd784984bf16
+h
+8src/com/asdeire/autorent/domain/impl/GenericService.java,7\8\7808a18f11100693509529625ac977966616801a
+e
+5src/com/asdeire/autorent/domain/impl/AuthService.java,b\0\b0987083bd692ca89701f7379af738e9f0dbf95a
+g
+7src/com/asdeire/autorent/domain/impl/SignUpService.java,d\2\d263ab3bb02cf702816b5fd35a278d94a691a376

@@ -85,7 +85,7 @@ public class JsonRepositoryFactory extends RepositoryFactory {
     private <E extends Entity> void serializeEntities(Path path, Set<E> entities) {
         try (FileWriter writer = new FileWriter(path.toFile())) {
             // Скидуємо файлик, перед збереженням!
-            writer.write("[]");
+            writer.write("");
             // Перетворюємо колекцію користувачів в JSON та записуємо у файл
             gson.toJson(entities, writer);
 
@@ -94,6 +94,7 @@ public class JsonRepositoryFactory extends RepositoryFactory {
                 .formatted(e.getMessage()));
         }
     }
+
 
     private static class InstanceHolder {
 

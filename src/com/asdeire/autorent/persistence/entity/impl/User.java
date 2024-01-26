@@ -4,6 +4,7 @@ package com.asdeire.autorent.persistence.entity.impl;
 import com.asdeire.autorent.persistence.entity.Entity;
 import com.asdeire.autorent.persistence.entity.ErrorTemplates;
 import com.asdeire.autorent.persistence.exception.EntityArgumentException;
+import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -14,18 +15,22 @@ public class User extends Entity {
     private String email;
     private final String password;
     private int balance;
+    private final Role role;
 
-    public User(UUID id, String password, String username, String email, int balance){
+    public User(UUID id, String password, String username, String email, int balance, Role role){
         super(id);
         this.email = email;
         this.password = validatedPassword(password);
         this.balance = balance;
         setUsername(username);
+        this.role = role;
     }
 
     public String getUsername(){return username;}
 
     public void setEmail(String email){this.email = email;}
+
+    public String getPassword(){return password;}
 
     public int getBalance(){return balance;}
 
@@ -94,5 +99,31 @@ public class User extends Entity {
     @Override
     public int hashCode() {
         return Objects.hash(email);
+    }
+
+    public enum Role {
+        ADMIN("admin", Map.of(
+            EntityName.VEHICLE, new Permission(true, true, true, true),
+            EntityName.REVIEW, new Permission(true, true, true, true),
+            EntityName.USER, new Permission(true, true, true, true))),
+        GENERAL("general", Map.of(
+            EntityName.VEHICLE, new Permission(true, true, true, true),
+            EntityName.REVIEW, new Permission(true, false, true, true),
+            EntityName.USER, new Permission(false, false, false, false)));
+
+        private final String name;
+        private final Map<EntityName, Permission> permissions;
+
+        Role(String name, Map<EntityName, Permission> permissions) {
+            this.name = name;
+            this.permissions = permissions;
+        }
+
+        public enum EntityName {REVIEW, VEHICLE, USER}
+
+        private record Permission(boolean canAdd, boolean canEdit, boolean canDelete,
+                                  boolean canRead) {
+
+        }
     }
 }

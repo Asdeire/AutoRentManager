@@ -4,6 +4,7 @@ import static com.asdeire.autorent.persistence.entity.impl.Vehicle.readVehiclesF
 import static java.lang.System.out;
 
 import com.asdeire.autorent.domain.exception.SignUpException;
+import com.asdeire.autorent.domain.impl.RentalService;
 import com.asdeire.autorent.domain.impl.SignUpService;
 import com.asdeire.autorent.persistence.entity.impl.Category;
 import com.asdeire.autorent.persistence.entity.impl.User.Role;
@@ -30,7 +31,7 @@ import java.util.UUID;
 public class App {
 
     public static void main(String[] args) {
-        /*RepositoryFactory jsonRepositoryFactory = RepositoryFactory
+       /*RepositoryFactory jsonRepositoryFactory = RepositoryFactory
             .getRepositoryFactory(RepositoryFactory.JSON);
         UserRepository userRepository = jsonRepositoryFactory.getUserRepository();
         SignUpService signUpService = new SignUpService(userRepository);
@@ -49,19 +50,36 @@ public class App {
         jsonRepositoryFactory.commit();*/
 
 
-        Path filePath = Path.of("data/vehicles.json");
+        /*Path filePath = Path.of("data/vehicles.json");
         List<Vehicle> vehicles = readVehiclesFromJsonFile(filePath);
 
-        if (vehicles != null) {
-            // Виведення отриманих даних
-            for (Vehicle vehicle : vehicles) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введіть категорію для фільтрації:");
+        String inputCategory = scanner.nextLine();
+
+        System.out.println("Результати фільтрації за категорією " + inputCategory + ":");
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getCategory().getName().equalsIgnoreCase(inputCategory)) {
                 System.out.println("Name: " + vehicle.getName());
                 System.out.println("Price: " + vehicle.getPrice());
                 System.out.println("Description: " + vehicle.getDescription());
                 System.out.println("Category: " + vehicle.getCategory().getName());
                 System.out.println("--------------");
             }
-        }
+        }*/
+
+        /*Path filePath = Path.of("data/vehicles.json");
+        List<Vehicle> vehicles = readVehiclesFromJsonFile(filePath);
+
+        // Виведення переліку категорій
+        RentalService.displayCategories(vehicles);
+
+        // Вибір категорії користувачем
+        Category selectedCategory = RentalService.selectCategory();
+
+        // Виведення даних для обраної категорії
+        RentalService.displayDataForCategory(vehicles, selectedCategory);*/
+
     }
 
 }

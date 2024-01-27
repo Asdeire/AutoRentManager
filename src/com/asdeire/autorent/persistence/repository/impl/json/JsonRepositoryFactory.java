@@ -53,7 +53,7 @@ public class JsonRepositoryFactory extends RepositoryFactory {
 
         gson = gsonBuilder.setPrettyPrinting().create();
 
-        vehicleJsonRepositoryImpl = new VehicleJsonRepositoryImpl(gson);
+
         reviewJsonRepositoryImpl = new ReviewJsonRepositoryImpl(gson);
         userJsonRepositoryImpl = new UserJsonRepositoryImpl(gson);
     }

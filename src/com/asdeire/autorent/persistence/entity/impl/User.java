@@ -17,10 +17,10 @@ public class User extends Entity {
     private int balance;
     private final Role role;
 
-    public User(UUID id, String password, String username, String email, int balance, Role role){
+    public User(UUID id, String password, String email, String username, int balance, Role role){
         super(id);
         this.email = email;
-        this.password = validatedPassword(password);
+        this.password = password; //validatedPassword(password);
         this.balance = balance;
         setUsername(username);
         this.role = role;
@@ -58,30 +58,6 @@ public class User extends Entity {
         }
 
         this.username = username;
-    }
-
-    private String validatedPassword(String password) {
-        final String templateName = "паролю";
-
-        if (password.isBlank()) {
-            errors.add(ErrorTemplates.REQUIRED.getTemplate().formatted(templateName));
-        }
-        if (password.length() < 8) {
-            errors.add(ErrorTemplates.MIN_LENGTH.getTemplate().formatted(templateName, 4));
-        }
-        if (password.length() > 32) {
-            errors.add(ErrorTemplates.MAX_LENGTH.getTemplate().formatted(templateName, 32));
-        }
-        var pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$");
-        if (pattern.matcher(password).matches()) {
-            errors.add(ErrorTemplates.PASSWORD.getTemplate().formatted(templateName, 24));
-        }
-
-        if (!this.errors.isEmpty()) {
-            throw new EntityArgumentException(errors);
-        }
-
-        return password;
     }
 
     @Override

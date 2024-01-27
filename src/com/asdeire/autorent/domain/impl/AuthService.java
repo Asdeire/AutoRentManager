@@ -4,6 +4,7 @@ import com.asdeire.autorent.domain.exception.AuthException;
 import com.asdeire.autorent.domain.exception.UserAlreadyAuthException;
 import com.asdeire.autorent.persistence.entity.impl.User;
 import com.asdeire.autorent.persistence.repository.contracts.UserRepository;
+import java.util.Scanner;
 import org.mindrot.bcrypt.BCrypt;
 
 
@@ -47,5 +48,16 @@ public class AuthService {
             throw new UserAlreadyAuthException("Ви ще не автентифікавані.");
         }
         user = null;
+    }
+
+    public void openAuthService(AuthService authService){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введіть імя користувача:");
+        String username = scanner.nextLine();
+        System.out.println("Введіть пароль:");
+        String password = scanner.nextLine();
+
+        authService.authenticate(username, password);
     }
 }

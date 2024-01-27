@@ -1,8 +1,10 @@
 package com.asdeire.autorent.domain.impl;
 
 import com.asdeire.autorent.domain.exception.SignUpException;
+import com.asdeire.autorent.persistence.entity.ErrorTemplates;
 import com.asdeire.autorent.persistence.entity.impl.User;
 import com.asdeire.autorent.persistence.entity.impl.User.Role;
+import com.asdeire.autorent.persistence.exception.EntityArgumentException;
 import com.asdeire.autorent.persistence.repository.contracts.UserRepository;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -12,16 +14,13 @@ import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Properties;
+import java.util.Scanner;
 import java.util.UUID;
 import java.util.function.Supplier;
+import java.util.regex.Pattern;
 import org.mindrot.bcrypt.BCrypt;
 
 public class SignUpService {
@@ -32,14 +31,6 @@ public class SignUpService {
 
     public SignUpService(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    private static String getFileExtension(String fileName) {
-        int dotIndex = fileName.lastIndexOf('.');
-        if (dotIndex > 0 && dotIndex < fileName.length() - 1) {
-            return fileName.substring(dotIndex + 1);
-        }
-        return "";
     }
 
     // відправлення на пошту
@@ -114,17 +105,17 @@ public class SignUpService {
         codeCreationTime = null;
     }
 
-    public void signUp(String username,
+    public void signUp(String email,
         String password,
-        String email,
+        String username,
         int balance,
         Supplier<String> waitForUserInput) {
-        signUp(username, password, email, balance, Role.GENERAL, waitForUserInput);
+        signUp(email, password, username, balance, Role.GENERAL, waitForUserInput);
     }
 
-    public void signUp(String username,
+    public void signUp(String email,
         String password,
-        String email,
+        String username,
         int balance,
         Role role,
         Supplier<String> waitForUserInput) {
@@ -138,8 +129,8 @@ public class SignUpService {
             userRepository.add(
                 new User(UUID.randomUUID(),
                     BCrypt.hashpw(password, BCrypt.gensalt()),
-                    email,
                     username,
+                    email,
                     balance,
                     role)
             );
@@ -147,6 +138,45 @@ public class SignUpService {
         } catch (Exception e) {
             throw new SignUpException("Помилка при збереженні користувача: %s"
                 .formatted(e.getMessage()));
+        }
+    }
+
+    private String validatedPassword(String password) {
+        final String templateName = "паролю";
+
+        if (password.length() < 8) {
+            System.out.println("Пароль має містити мінімум 8 символів");
+        }
+        if (password.length() > 32) {
+            System.out.println("Пароль має містити не більше 32 символів");
+        }
+        if (password.isEmpty()) {
+            System.out.println("Будь ласка введіть пароль");
+        }
+
+        return password;
+    }
+
+    public void openSignUpService(SignUpService signUpService){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введіть імя користувача:");
+        String username = scanner.nextLine();
+        System.out.println("Введіть пароль:");
+        String password = scanner.nextLine();
+        System.out.println("Введіть email:");
+        String email = scanner.nextLine();
+
+        String correctPassword = validatedPassword(password);
+
+        try {
+            signUpService.signUp(username, correctPassword, email, 1000,
+                () -> {
+                    System.out.print("Введіть код підтвердження: ");
+                    return scanner.nextLine();
+                });
+        } catch (SignUpException e) {
+            System.err.println(e.getMessage());
         }
     }
 }

@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "username": "Kovmak",
+    "email": "lasda@gmail.com",
+    "password": "$2a$10$8cuqYPWRSbAqUSuz9uKjlu47iMhdgzgnzD38/.aYzxgCiAhM1jORK",
+    "balance": 1000,
+    "role": "GENERAL",
+    "id": "6d19b610-5910-4ec9-8379-3d358b54bddf"
+  },
+  {
+    "username": "User",
+    "email": "qwee@gmail.com",
+    "password": "$2a$10$OwCLnKCWAYtmi2wCKW825O1wGanVGQpeuU1NuYC9HQ7IvBMBDi25e",
+    "balance": 1000,
+    "role": "GENERAL",
+    "id": "2ccf4f15-6c33-479a-99e7-58d71a1026ef"
+  },
+  {
+    "username": "CHicha1",
+    "email": "asd@gmail.com",
+    "password": "$2a$10$DxO9ST4gq5prFroA10JCeezZMuEjHj4tLFFmmURSQEfdFDLH08zNi",
+    "balance": 1000,
+    "role": "GENERAL",
+    "id": "333c3784-6bc3-4b01-9536-209e2c531739"
+  }
+]

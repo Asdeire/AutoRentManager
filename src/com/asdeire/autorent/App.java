@@ -1,85 +1,41 @@
 package com.asdeire.autorent;
 
-import static com.asdeire.autorent.persistence.entity.impl.Vehicle.readVehiclesFromJsonFile;
-import static java.lang.System.out;
 
-import com.asdeire.autorent.domain.exception.SignUpException;
-import com.asdeire.autorent.domain.impl.RentalService;
+import com.asdeire.autorent.domain.impl.AuthService;
+import com.asdeire.autorent.domain.impl.CategoryService;
 import com.asdeire.autorent.domain.impl.SignUpService;
-import com.asdeire.autorent.persistence.entity.impl.Category;
-import com.asdeire.autorent.persistence.entity.impl.User.Role;
-import com.asdeire.autorent.persistence.entity.impl.Vehicle;
 import com.asdeire.autorent.persistence.repository.RepositoryFactory;
 import com.asdeire.autorent.persistence.repository.contracts.UserRepository;
-import com.github.javafaker.Faker;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Type;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Scanner;
-import com.asdeire.autorent.persistence.entity.impl.User;
-import java.util.Set;
-import java.util.UUID;
+import java.util.Scanner;;
 
 public class App {
 
     public static void main(String[] args) {
-       /*RepositoryFactory jsonRepositoryFactory = RepositoryFactory
+
+        RepositoryFactory jsonRepositoryFactory = RepositoryFactory
             .getRepositoryFactory(RepositoryFactory.JSON);
+
         UserRepository userRepository = jsonRepositoryFactory.getUserRepository();
+        AuthService authService = new AuthService(userRepository);
         SignUpService signUpService = new SignUpService(userRepository);
-        try {
-            signUpService.signUp("User", "Pass1-word", "example@gmail.com", 1000,
-                () -> {
-                    System.out.print("Введіть код підтвердження: ");
-                    Scanner scanner = new Scanner(System.in);
-                    return scanner.nextLine();
-                });
-        } catch (SignUpException e) {
-            System.err.println(e.getMessage());
+        CategoryService categoryService = new CategoryService();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1. Авторизація");
+        System.out.println("2. Реєстрація");
+        int choice = Integer.valueOf(scanner.nextLine());
+
+        switch (choice) {
+            case 1 -> authService.openAuthService(authService);
+            case 2 -> signUpService.openSignUpService(signUpService);
+            default -> {}
+        }
+
+        if (authService.isAuthenticated()){
+            categoryService.chooseCategory();
         }
 
         // Цей рядок, має бути обовязково в кінці метода main!!!!
-        jsonRepositoryFactory.commit();*/
-
-
-        /*Path filePath = Path.of("data/vehicles.json");
-        List<Vehicle> vehicles = readVehiclesFromJsonFile(filePath);
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введіть категорію для фільтрації:");
-        String inputCategory = scanner.nextLine();
-
-        System.out.println("Результати фільтрації за категорією " + inputCategory + ":");
-        for (Vehicle vehicle : vehicles) {
-            if (vehicle.getCategory().getName().equalsIgnoreCase(inputCategory)) {
-                System.out.println("Name: " + vehicle.getName());
-                System.out.println("Price: " + vehicle.getPrice());
-                System.out.println("Description: " + vehicle.getDescription());
-                System.out.println("Category: " + vehicle.getCategory().getName());
-                System.out.println("--------------");
-            }
-        }*/
-
-        /*Path filePath = Path.of("data/vehicles.json");
-        List<Vehicle> vehicles = readVehiclesFromJsonFile(filePath);
-
-        // Виведення переліку категорій
-        RentalService.displayCategories(vehicles);
-
-        // Вибір категорії користувачем
-        Category selectedCategory = RentalService.selectCategory();
-
-        // Виведення даних для обраної категорії
-        RentalService.displayDataForCategory(vehicles, selectedCategory);*/
-
+        jsonRepositoryFactory.commit();
     }
-
 }

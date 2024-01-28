@@ -9,6 +9,7 @@ import java.util.UUID;
 import java.util.function.Predicate;
 
 public class GenericService<E extends Entity> implements Service<E> {
+
     private final Repository<E> repository;
 
     public GenericService(Repository<E> repository) {

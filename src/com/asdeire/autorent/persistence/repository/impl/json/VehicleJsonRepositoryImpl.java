@@ -9,8 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class VehicleJsonRepositoryImpl
-        extends  GenericJsonRepository<Vehicle>
-        implements VehicleRepository {
+    extends GenericJsonRepository<Vehicle>
+    implements VehicleRepository {
 
     public VehicleJsonRepositoryImpl(Gson gson) {
         super(gson, JsonPathFactory.VEHICLES.getPath(), TypeToken

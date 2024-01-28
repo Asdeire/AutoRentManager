@@ -2,13 +2,6 @@
   <library name="bcrypt-0.3">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/libs/bcrypt-0.3.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/commons-lang3-3.5.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/generex-1.0.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/gson-2.10.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/jakarta.activation-2.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/jakarta.mail-2.0.1.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/javafaker-1.0.2.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/snakeyaml-1.23.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

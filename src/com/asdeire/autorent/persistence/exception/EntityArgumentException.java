@@ -3,6 +3,7 @@ package com.asdeire.autorent.persistence.exception;
 import java.util.List;
 
 public class EntityArgumentException extends IllegalArgumentException {
+
     /**
      * List of error messages describing the validation issues with the entity fields.
      */

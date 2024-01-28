@@ -19,6 +19,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class GenericJsonRepository<E extends Entity> implements Repository<E> {
+
     protected final Set<E> entities;
     private final Gson gson;
     private final Path path;

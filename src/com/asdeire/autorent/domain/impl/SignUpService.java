@@ -55,7 +55,8 @@ public class SignUpService {
             Message message = new MimeMessage(session);
 
             // Встановлення відправника
-            message.setFrom(new InternetAddress("oleksandr20032006@gmail.com")); // Замініть на власну адресу
+            message.setFrom(
+                new InternetAddress("oleksandr20032006@gmail.com")); // Замініть на власну адресу
 
             // Встановлення отримувача
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
@@ -105,17 +106,17 @@ public class SignUpService {
         codeCreationTime = null;
     }
 
-    public void signUp(String email,
+    public void signUp(String username,
         String password,
-        String username,
+        String email,
         int balance,
         Supplier<String> waitForUserInput) {
-        signUp(email, password, username, balance, Role.GENERAL, waitForUserInput);
+        signUp(username, password, email, balance, Role.GENERAL, waitForUserInput);
     }
 
-    public void signUp(String email,
+    public void signUp(String username,
         String password,
-        String username,
+        String email,
         int balance,
         Role role,
         Supplier<String> waitForUserInput) {
@@ -129,8 +130,8 @@ public class SignUpService {
             userRepository.add(
                 new User(UUID.randomUUID(),
                     BCrypt.hashpw(password, BCrypt.gensalt()),
-                    username,
                     email,
+                    username,
                     balance,
                     role)
             );
@@ -157,7 +158,7 @@ public class SignUpService {
         return password;
     }
 
-    public void openSignUpService(SignUpService signUpService){
+    public void openSignUpService(SignUpService signUpService) {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введіть імя користувача:");
@@ -167,10 +168,10 @@ public class SignUpService {
         System.out.println("Введіть email:");
         String email = scanner.nextLine();
 
-        String correctPassword = validatedPassword(password);
+        //String correctPassword = validatedPassword(password);
 
         try {
-            signUpService.signUp(username, correctPassword, email, 1000,
+            signUpService.signUp(email, password, username, 1000,
                 () -> {
                     System.out.print("Введіть код підтвердження: ");
                     return scanner.nextLine();

@@ -1,5 +1,6 @@
 
+]	java:S125"<This block of commented-out lines of code should be removed.(‡‚¦úÿÿÿÿ8ò€š…Õ1
 _
-java:S63533"CUse concise character class syntax '\\w' instead of '[a-zA-Z0-9_]'.(¤…8‡½”Ô1
+java:S6353-"CUse concise character class syntax '\\w' instead of '[a-zA-Z0-9_]'.(¤…8õ€š…Õ1
 E
-java:S1068"(Remove this unused "role" private field.(Ìï®8£‡½”Ô1
+java:S1068"(Remove this unused "role" private field.(Ìï®8ø€š…Õ1

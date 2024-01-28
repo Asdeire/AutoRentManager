@@ -70,8 +70,6 @@ l
 ,src/com/asdeire/autorent/domain/Service.java,a\4\a4ad1f262dea350bf3e3e672f60ddd784984bf16
 h
 8src/com/asdeire/autorent/domain/impl/GenericService.java,7\8\7808a18f11100693509529625ac977966616801a
-e
-5src/com/asdeire/autorent/domain/impl/AuthService.java,b\0\b0987083bd692ca89701f7379af738e9f0dbf95a
 g
 7src/com/asdeire/autorent/domain/impl/SignUpService.java,d\2\d263ab3bb02cf702816b5fd35a278d94a691a376
 w
@@ -180,3 +178,15 @@ s
 Csrc/com/asdeire/autorent/persistence/util/CategoryDeserializer.java,1\9\19ecdcc094fcf2ee96593bf6f641b6f0c742feea
 g
 7src/com/asdeire/autorent/domain/impl/RentalService.java,7\c\7c5c780068676b45fae0dab866a7e702278957c7
+T
+$.idea/libraries/consoleui_0_0_13.xml,1\b\1bb1ab896fa62209462a8f82baa0353c83d4e1f9
+i
+9src/com/asdeire/autorent/domain/impl/AuthServiceImpl.java,c\9\c9a180a09d8033358533a0c9c32041c3122b0629
+e
+5src/com/asdeire/autorent/domain/impl/MainService.java,c\3\c35ba3026d237a00a3696589a889853a5f610d63
+i
+9src/com/asdeire/autorent/domain/impl/CategoryService.java,9\e\9e529214ccf8e0e31a97ed407c5ae8f6d2c94606
+g
+7src/com/asdeire/autorent/domain/impl/ReviewService.java,3\a\3a50a9af19e414c09651a9dfae765121547d54c8
+U
+%src/com/asdeire/autorent/Startup.java,c\5\c5fd22f309318d34698a40bccf4b9e6fc8d9b474

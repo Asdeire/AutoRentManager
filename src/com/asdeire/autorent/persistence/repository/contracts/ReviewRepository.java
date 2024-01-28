@@ -6,5 +6,6 @@ import com.asdeire.autorent.persistence.repository.Repository;
 import java.util.Set;
 
 public interface ReviewRepository extends Repository<Review> {
+
     Set<Review> findAllByAuthor(User author);
 }

@@ -27,6 +27,21 @@ public class Vehicle extends Entity {
         this.category = category;
     }
 
+    public static List<Vehicle> readVehiclesFromJsonFile(Path filePath) {
+        try (FileReader reader = new FileReader(filePath.toFile())) {
+            Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Category.class, new CategoryDeserializer())
+                .create();
+
+            Type listType = new TypeToken<List<Vehicle>>() {
+            }.getType();
+            return gson.fromJson(reader, listType);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -45,19 +60,5 @@ public class Vehicle extends Entity {
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public static List<Vehicle> readVehiclesFromJsonFile(Path filePath) {
-        try (FileReader reader = new FileReader(filePath.toFile())) {
-            Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Category.class, new CategoryDeserializer())
-                .create();
-
-            Type listType = new TypeToken<List<Vehicle>>() {}.getType();
-            return gson.fromJson(reader, listType);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }

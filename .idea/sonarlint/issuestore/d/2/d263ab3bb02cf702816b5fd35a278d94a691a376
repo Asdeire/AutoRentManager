@@ -1,16 +1,19 @@
 
-b	java:S112T"FDefine and throw a dedicated exception instead of using a generic one.(ÃÔ÷ı8ûëŸ°Ô1
+b	java:S112L"FDefine and throw a dedicated exception instead of using a generic one.(ÃÔ÷ı8Øª†‡Õ1
 F
-java:S2140[")Use "java.util.Random.nextInt()" instead.(¦™Ò»8ìŸ°Ô1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8£ìŸ°Ô1
-M
-java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü8£ìŸ°Ô1
-L
-java:S1128"/Remove this unused import 'java.nio.file.Path'.(×²êÂ8£ìŸ°Ô1
-M
-java:S1128"0Remove this unused import 'java.nio.file.Paths'.(áè°¯8£ìŸ°Ô1
-R
-java:S1128"0Remove this unused import 'java.time.LocalDate'.(›‘¬èıÿÿÿÿ8£ìŸ°Ô1
-R
-java:S1144%"5Remove this unused private "getFileExtension" method.(ÛÔâö8£ìŸ°Ô1
+java:S2140S")Use "java.util.Random.nextInt()" instead.(¦™Ò»8ùª†‡Õ1
+^
+java:S1854’"@Remove this useless assignment to local variable "templateName".(»‡İ8üª†‡Õ1
+O
+java:S1481’"1Remove this unused "templateName" local variable.(»‡İ8üª†‡Õ1
+Y	java:S125«"<This block of commented-out lines of code should be removed.(ù‹Í¤8ˆ«†‡Õ1
+v
+java:S2234®"XParameters to signUp have the same names but not the same order as the method arguments.(ƒ‹Ã­8ˆ«†‡Õ1
+u
+java:S1128"SRemove this unused import 'com.asdeire.autorent.persistence.entity.ErrorTemplates'.(ÉéÑ«şÿÿÿÿ8‰«†‡Õ1
+|
+java:S1128"_Remove this unused import 'com.asdeire.autorent.persistence.exception.EntityArgumentException'.(£ÔÈ†8‰«†‡Õ1
+V
+java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8‰«†‡Õ1
+Y
+java:S1144‘"6Remove this unused private "validatedPassword" method.(û¯¤¬ıÿÿÿÿ8‰«†‡Õ1

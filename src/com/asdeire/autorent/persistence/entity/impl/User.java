@@ -11,13 +11,13 @@ import java.util.regex.Pattern;
 
 public class User extends Entity {
 
+    private final String password;
+    private final Role role;
     private String username;
     private String email;
-    private final String password;
     private int balance;
-    private final Role role;
 
-    public User(UUID id, String password, String email, String username, int balance, Role role){
+    public User(UUID id, String password, String email, String username, int balance, Role role) {
         super(id);
         this.email = email;
         this.password = password; //validatedPassword(password);
@@ -26,15 +26,9 @@ public class User extends Entity {
         this.role = role;
     }
 
-    public String getUsername(){return username;}
-
-    public void setEmail(String email){this.email = email;}
-
-    public String getPassword(){return password;}
-
-    public int getBalance(){return balance;}
-
-    public void setBalance(int balance){this.balance = balance;}
+    public String getUsername() {
+        return username;
+    }
 
     public void setUsername(String username) {
         final String templateName = "логіну";
@@ -58,6 +52,22 @@ public class User extends Entity {
         }
 
         this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
     @Override

@@ -8,4 +8,5 @@ import java.util.Set;
 public interface VehicleRepository extends Repository<Vehicle> {
 
     Set<Vehicle> findAllByCategory(Category category);
+
 }

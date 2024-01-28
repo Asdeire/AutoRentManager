@@ -9,8 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ReviewJsonRepositoryImpl
-        extends GenericJsonRepository<Review>
-        implements ReviewRepository {
+    extends GenericJsonRepository<Review>
+    implements ReviewRepository {
 
     public ReviewJsonRepositoryImpl(Gson gson) {
         super(gson, JsonPathFactory.REVIEWS.getPath(), TypeToken
@@ -19,8 +19,8 @@ public class ReviewJsonRepositoryImpl
     }
 
     @Override
-    public Set<Review> findAllByAuthor(User author){
+    public Set<Review> findAllByAuthor(User author) {
         return entities.stream().filter(l -> l.getAuthor().equals(author))
-                .collect(Collectors.toSet());
+            .collect(Collectors.toSet());
     }
 }

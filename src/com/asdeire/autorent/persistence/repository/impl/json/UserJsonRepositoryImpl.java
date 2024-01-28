@@ -8,8 +8,8 @@ import java.util.Optional;
 import java.util.Set;
 
 public class UserJsonRepositoryImpl
-        extends GenericJsonRepository<User>
-        implements UserRepository {
+    extends GenericJsonRepository<User>
+    implements UserRepository {
 
     public UserJsonRepositoryImpl(Gson gson) {
         super(gson, JsonPathFactory.USERS.getPath(), TypeToken

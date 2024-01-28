@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Entity {
+
     protected final UUID id;
     protected transient List<String> errors;
     protected transient boolean isValid;

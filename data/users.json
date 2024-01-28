@@ -8,11 +8,19 @@
     "id": "6d19b610-5910-4ec9-8379-3d358b54bddf"
   },
   {
+    "password": "$2a$10$2HYWd1SwNpjZIICvXMvc0uEzKUubZzB5JbXkMIhFpzKdjV6b9IWUu",
+    "role": "GENERAL",
+    "username": "ashka@gmail.com",
+    "email": "Ashka",
+    "balance": 1000,
+    "id": "7d0b04cc-d439-4f5e-9be8-7bf1e7c08a65"
+  },
+  {
     "password": "$2a$10$OwCLnKCWAYtmi2wCKW825O1wGanVGQpeuU1NuYC9HQ7IvBMBDi25e",
     "role": "GENERAL",
     "username": "User",
     "email": "qwee@gmail.com",
-    "balance": 1300,
+    "balance": 732,
     "id": "2ccf4f15-6c33-479a-99e7-58d71a1026ef"
   },
   {

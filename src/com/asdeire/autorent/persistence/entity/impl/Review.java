@@ -5,10 +5,11 @@ import java.util.UUID;
 
 public class Review extends Entity {
 
-    private User author;
+    private User user;
     private String feedback;
+    private String author;
 
-    public Review(UUID id, User author, String feedback) {
+    public Review(UUID id, String carName, String author, String feedback) {
         super(id);
         this.author = author;
         this.feedback = feedback;
@@ -19,10 +20,10 @@ public class Review extends Entity {
     }
 
     public User getAuthor() {
-        return author;
+        return user;
     }
 
     public void setAuthor(User author) {
-        this.author = author;
+        this.user = user;
     }
 }

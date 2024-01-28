@@ -5,6 +5,7 @@ import static com.asdeire.autorent.persistence.entity.impl.Vehicle.readVehiclesF
 import com.asdeire.autorent.Startup;
 import com.asdeire.autorent.persistence.entity.impl.User;
 import com.asdeire.autorent.persistence.entity.impl.Vehicle;
+import com.asdeire.autorent.persistence.repository.contracts.ReviewRepository;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
@@ -15,8 +16,15 @@ public class CategoryService {
     List<Vehicle> vehicles = readVehiclesFromJsonFile(filePath);
     private User user;
 
-    public void setUser(User user){
+    private ReviewRepository reviewRepository;
+
+    public void setUserCategory(User user){
         this.user = user;
+    }
+
+    public void setReviewRepository(
+        ReviewRepository reviewRepository) {
+        this.reviewRepository = reviewRepository;
     }
 
     public void chooseCategory() {
@@ -62,8 +70,9 @@ public class CategoryService {
                 Vehicle selectedVehicle = getVehicleByNumber(inputCategory, selectedVehicleNumber);
                 displayVehicleDetails(selectedVehicle);
 
-                RentalService rentalService = new RentalService(user);
+                RentalService rentalService = new RentalService(user, reviewRepository);
                 rentalService.rentVehicle(selectedVehicle);
+                rentalService.leaveReview(selectedVehicle);
             } else {
                 System.out.println("Невірний номер автомобіля. Будь ласка, оберіть знову.");
             }

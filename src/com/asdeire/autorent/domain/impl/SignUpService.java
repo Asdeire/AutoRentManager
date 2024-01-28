@@ -171,13 +171,15 @@ public class SignUpService {
         //String correctPassword = validatedPassword(password);
 
         try {
-            signUpService.signUp(email, password, username, 1000,
+            signUpService.signUp(username, password, email, 1000,
                 () -> {
                     System.out.print("Введіть код підтвердження: ");
                     return scanner.nextLine();
                 });
         } catch (SignUpException e) {
+            System.out.print("\033[H\033[2J");
             System.err.println(e.getMessage());
+            openSignUpService(signUpService);
         }
     }
 }

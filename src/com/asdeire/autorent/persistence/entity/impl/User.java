@@ -20,7 +20,7 @@ public class User extends Entity {
     public User(UUID id, String password, String email, String username, int balance, Role role) {
         super(id);
         this.email = email;
-        this.password = password; //validatedPassword(password);
+        this.password = password;
         this.balance = balance;
         setUsername(username);
         this.role = role;

@@ -1,3 +1,14 @@
 
+
+java:S4165"bRemove this useless assignment; "user" already holds the assigned value along all execution paths.(»¶¤İ8ÈõŸÕ1
 M
-java:S2160"+Override the "equals" method in this class.(–íò®ıÿÿÿÿ8°³ÄãÓ1
+java:S2160"+Override the "equals" method in this class.(–íò®ıÿÿÿÿ8ÉõŸÕ1
+K
+java:S1172".Remove this unused method parameter "carName".(‰òóñ8ÊõŸÕ1
+O
+java:S1172"-Remove this unused method parameter "author".(¥ªÁøÿÿÿÿ8ËõŸÕ1
+L
+java:S1656"/Remove or correct this useless self-assignment.(»¶¤İ8ÌõŸÕ1
+G
+java:S1068
+"*Remove this unused "author" private field.(á™Ï8ÌõŸÕ1

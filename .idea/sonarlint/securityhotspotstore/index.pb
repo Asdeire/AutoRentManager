@@ -186,7 +186,5 @@ e
 5src/com/asdeire/autorent/domain/impl/MainService.java,c\3\c35ba3026d237a00a3696589a889853a5f610d63
 i
 9src/com/asdeire/autorent/domain/impl/CategoryService.java,9\e\9e529214ccf8e0e31a97ed407c5ae8f6d2c94606
-g
-7src/com/asdeire/autorent/domain/impl/ReviewService.java,3\a\3a50a9af19e414c09651a9dfae765121547d54c8
 U
 %src/com/asdeire/autorent/Startup.java,c\5\c5fd22f309318d34698a40bccf4b9e6fc8d9b474

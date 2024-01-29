@@ -1,5 +1,6 @@
 package com.asdeire.autorent.domain.impl;
 
+import com.asdeire.autorent.Startup;
 import com.asdeire.autorent.domain.exception.SignUpException;
 import com.asdeire.autorent.persistence.entity.ErrorTemplates;
 import com.asdeire.autorent.persistence.entity.impl.User;
@@ -46,7 +47,7 @@ public class SignUpService {
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("9dfa2cf39bd542", "c6558f50b691d5");
+                return new PasswordAuthentication("f065a06337ce46", "8f09273124df7d");
             }
         });
 
@@ -56,7 +57,7 @@ public class SignUpService {
 
             // Встановлення відправника
             message.setFrom(
-                new InternetAddress("oleksandr20032006@gmail.com")); // Замініть на власну адресу
+                new InternetAddress("kaoleksandr7.com")); // Замініть на власну адресу
 
             // Встановлення отримувача
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
@@ -142,20 +143,13 @@ public class SignUpService {
         }
     }
 
-    private String validatedPassword(String password) {
-        final String templateName = "паролю";
+    private boolean validatedPassword(String password) {
 
         if (password.length() < 8) {
-            System.out.println("Пароль має містити мінімум 8 символів");
-        }
-        if (password.length() > 32) {
-            System.out.println("Пароль має містити не більше 32 символів");
-        }
-        if (password.isEmpty()) {
-            System.out.println("Будь ласка введіть пароль");
+            return false;
         }
 
-        return password;
+        return true;
     }
 
     public void openSignUpService(SignUpService signUpService) {
@@ -168,18 +162,27 @@ public class SignUpService {
         System.out.println("Введіть email:");
         String email = scanner.nextLine();
 
-        //String correctPassword = validatedPassword(password);
 
-        try {
-            signUpService.signUp(username, password, email, 1000,
-                () -> {
-                    System.out.print("Введіть код підтвердження: ");
-                    return scanner.nextLine();
-                });
-        } catch (SignUpException e) {
+        if(!validatedPassword(password)){
             System.out.print("\033[H\033[2J");
-            System.err.println(e.getMessage());
+            System.err.println("Пароль не відповдіє вимогам, спробуйте знову!");
             openSignUpService(signUpService);
+        }
+        else {
+            try {
+                signUpService.signUp(username, password, email, 1000,
+                    () -> {
+                        System.out.print("Введіть код підтвердження: ");
+                        return scanner.nextLine();
+                    });
+                System.out.print("\033[H\033[2J");
+                System.out.println("Користувача було успішно додано!");
+                Startup.init();
+            } catch (SignUpException e) {
+                System.out.print("\033[H\033[2J");
+                System.err.println(e.getMessage());
+                openSignUpService(signUpService);
+            }
         }
     }
 }

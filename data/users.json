@@ -8,20 +8,44 @@
     "id": "6d19b610-5910-4ec9-8379-3d358b54bddf"
   },
   {
-    "password": "$2a$10$2HYWd1SwNpjZIICvXMvc0uEzKUubZzB5JbXkMIhFpzKdjV6b9IWUu",
-    "role": "GENERAL",
-    "username": "ashka@gmail.com",
-    "email": "Ashka",
-    "balance": 1000,
-    "id": "7d0b04cc-d439-4f5e-9be8-7bf1e7c08a65"
-  },
-  {
     "password": "$2a$10$OwCLnKCWAYtmi2wCKW825O1wGanVGQpeuU1NuYC9HQ7IvBMBDi25e",
     "role": "GENERAL",
     "username": "User",
     "email": "qwee@gmail.com",
     "balance": 732,
     "id": "2ccf4f15-6c33-479a-99e7-58d71a1026ef"
+  },
+  {
+    "password": "$2a$10$O6Feaaoy63/QFikGfQ4cXu6q7BOTW1fwh.10lVS1RjgKbexwacYv2",
+    "role": "GENERAL",
+    "username": "Chuma",
+    "email": "chuma@gmail.com",
+    "balance": 1000,
+    "id": "b9852363-3ada-4f7d-aa07-5aa842142786"
+  },
+  {
+    "password": "$2a$10$mzbtPxyZvDGO9HbLMz9B5.39O31K9/5pFvcGlJWInGR/ZzRrm43jm",
+    "role": "GENERAL",
+    "username": "Chipichapa",
+    "email": "chipi@gmail.com",
+    "balance": 1000,
+    "id": "05f5bec6-3756-4385-8418-509d6f9db42c"
+  },
+  {
+    "password": "$2a$10$iJPGyVSGzr6Re7tz2SFV8eroZuFYdjYtAdBGjeMX2eEQ2jUjAa.bC",
+    "role": "GENERAL",
+    "username": "Nyasha",
+    "email": "nyasha@gmail.com",
+    "balance": 1000,
+    "id": "4713770b-edb3-43d7-9f89-70c702abd238"
+  },
+  {
+    "password": "$2a$10$/gGNU1XvRfDPinQPOGJGTeM7uRUasO3YLo/tM8M3p8E0oY7ciNYt6",
+    "role": "GENERAL",
+    "username": "alaska",
+    "email": "alaska@gmail.com",
+    "balance": 1000,
+    "id": "9495e52e-0851-4068-bdcb-3ec966f26046"
   },
   {
     "password": "$2a$10$DxO9ST4gq5prFroA10JCeezZMuEjHj4tLFFmmURSQEfdFDLH08zNi",

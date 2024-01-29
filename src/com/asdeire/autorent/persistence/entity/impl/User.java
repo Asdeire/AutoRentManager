@@ -22,7 +22,7 @@ public class User extends Entity {
         this.email = email;
         this.password = password;
         this.balance = balance;
-        setUsername(username);
+        this.username = username;
         this.role = role;
     }
 
@@ -31,26 +31,6 @@ public class User extends Entity {
     }
 
     public void setUsername(String username) {
-        final String templateName = "логіну";
-
-        if (username.isBlank()) {
-            errors.add(ErrorTemplates.REQUIRED.getTemplate().formatted(templateName));
-        }
-        if (username.length() < 4) {
-            errors.add(ErrorTemplates.MIN_LENGTH.getTemplate().formatted(templateName, 4));
-        }
-        if (username.length() > 24) {
-            errors.add(ErrorTemplates.MAX_LENGTH.getTemplate().formatted(templateName, 24));
-        }
-        var pattern = Pattern.compile("^[a-zA-Z0-9_]+$");
-        if (pattern.matcher(username).matches()) {
-            errors.add(ErrorTemplates.ONLY_LATIN.getTemplate().formatted(templateName, 24));
-        }
-
-        if (!this.errors.isEmpty()) {
-            throw new EntityArgumentException(errors);
-        }
-
         this.username = username;
     }
 

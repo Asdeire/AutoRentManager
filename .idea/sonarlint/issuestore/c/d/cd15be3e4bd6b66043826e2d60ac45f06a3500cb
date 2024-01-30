@@ -1,5 +1,10 @@
 
-_
-java:S6353-"CUse concise character class syntax '\\w' instead of '[a-zA-Z0-9_]'.(¤…8õ€š…Õ1
+u
+java:S1128"SRemove this unused import 'com.asdeire.autorent.persistence.entity.ErrorTemplates'.(ÉéÑ«şÿÿÿÿ8üŸª©Õ1
+|
+java:S1128"_Remove this unused import 'com.asdeire.autorent.persistence.exception.EntityArgumentException'.(£ÔÈ†8üŸª©Õ1
+V
+java:S1128
+"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8üŸª©Õ1
 E
 java:S1068"(Remove this unused "role" private field.(Ìï®8ø€š…Õ1

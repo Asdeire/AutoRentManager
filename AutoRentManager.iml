@@ -16,6 +16,8 @@
     <orderEntry type="library" name="bcrypt-0.3" level="project" />
     <orderEntry type="library" name="gson-2.10.1" level="project" />
     <orderEntry type="library" name="bcrypt-0.31" level="project" />
+    <orderEntry type="library" name="jline-reader-3.25.1" level="project" />
+    <orderEntry type="library" name="jline-3.0.0.M1" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="1e197685-7a69-4b71-a328-44c670f30eb0" />

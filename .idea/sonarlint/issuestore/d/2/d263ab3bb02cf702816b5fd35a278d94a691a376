@@ -1,19 +1,16 @@
 
-b	java:S112L"FDefine and throw a dedicated exception instead of using a generic one.(ÃÔ÷ý8‹é¯‘Õ1
+b	java:S112M"FDefine and throw a dedicated exception instead of using a generic one.(ÃÔ÷ý8—ö×©Õ1
 F
-java:S2140S")Use "java.util.Random.nextInt()" instead.(¦™Ò»8Ÿé¯‘Õ1
+java:S2140T")Use "java.util.Random.nextInt()" instead.(¦™Ò»8°ö×©Õ1
 ^
-java:S1854’"@Remove this useless assignment to local variable "templateName".(»‡ÝŽ8¢é¯‘Õ1
-O
-java:S1481’"1Remove this unused "templateName" local variable.(»‡ÝŽ8¢é¯‘Õ1
-Y	java:S125«"<This block of commented-out lines of code should be removed.(ù‹Í¤8¥é¯‘Õ1
-v
-java:S2234®"XParameters to signUp have the same names but not the same order as the method arguments.(ƒ‹Ã­8æ»Ã‘Õ1
-u
-java:S1128"SRemove this unused import 'com.asdeire.autorent.persistence.entity.ErrorTemplates'.(ÉéÑ«þÿÿÿÿ8µë°‘Õ1
-|
-java:S1128"_Remove this unused import 'com.asdeire.autorent.persistence.exception.EntityArgumentException'.(£ÔÈ†8µë°‘Õ1
+java:S1126”"AReplace this if-then-else statement by a single return statement.(¿ÚË}8²ö×©Õ1
 V
-java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8µë°‘Õ1
-Y
-java:S1144‘"6Remove this unused private "validatedPassword" method.(û¯¤¬ýÿÿÿÿ8¦é¯‘Õ1
+java:S1128"9Remove this unused import 'com.asdeire.autorent.Startup'.(ÅÔ´Â8Å¤ì®Õ1
+u
+java:S1128"SRemove this unused import 'com.asdeire.autorent.persistence.entity.ErrorTemplates'.(ÉéÑ«þÿÿÿÿ8üá©Õ1
+|
+java:S1128"_Remove this unused import 'com.asdeire.autorent.persistence.exception.EntityArgumentException'.(£ÔÈ†8üá©Õ1
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8Æ¤ì®Õ1
+V
+java:S1128"4Remove this unused import 'java.util.regex.Pattern'.(Ã•…Äúÿÿÿÿ8üá©Õ1

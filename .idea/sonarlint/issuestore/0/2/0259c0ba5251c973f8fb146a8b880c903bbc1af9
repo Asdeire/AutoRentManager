@@ -1,0 +1,13 @@
+
+g	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8’¢—¯Õ1
+T
+java:S6126"2Replace this String concatenation with Text block.(¥³Šıÿÿÿÿ8 ¢—¯Õ1
+{
+java:S2142""^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¡¢—¯Õ1
+9
+java:S6205I"Remove this redundant block.(Ã·ä´8Ô×¯Õ1
+J	java:S108L")Either remove or fill this block of code.(ıÉçøÿÿÿÿ8Ô×¯Õ1
+E	java:S108O")Either remove or fill this block of code.(üØô8Ô×¯Õ1
+]	java:S125z"<This block of commented-out lines of code should be removed.(éªå¾üÿÿÿÿ8§¢—¯Õ1
+S
+java:S1144·"0Remove this unused private "clearScreen" method.(ÛÌ¾ûÿÿÿÿ8ôÿ ¯Õ1

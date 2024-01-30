@@ -143,7 +143,7 @@ public class SignUpService {
         }
     }
 
-    private boolean validatedPassword(String password) {
+    public boolean validatedPassword(String password) {
 
         if (password.length() < 8) {
             return false;
@@ -152,37 +152,4 @@ public class SignUpService {
         return true;
     }
 
-    public void openSignUpService(SignUpService signUpService) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введіть імя користувача:");
-        String username = scanner.nextLine();
-        System.out.println("Введіть пароль:");
-        String password = scanner.nextLine();
-        System.out.println("Введіть email:");
-        String email = scanner.nextLine();
-
-
-        if(!validatedPassword(password)){
-            System.out.print("\033[H\033[2J");
-            System.err.println("Пароль не відповдіє вимогам, спробуйте знову!");
-            openSignUpService(signUpService);
-        }
-        else {
-            try {
-                signUpService.signUp(username, password, email, 1000,
-                    () -> {
-                        System.out.print("Введіть код підтвердження: ");
-                        return scanner.nextLine();
-                    });
-                System.out.print("\033[H\033[2J");
-                System.out.println("Користувача було успішно додано!");
-                Startup.init();
-            } catch (SignUpException e) {
-                System.out.print("\033[H\033[2J");
-                System.err.println(e.getMessage());
-                openSignUpService(signUpService);
-            }
-        }
-    }
 }

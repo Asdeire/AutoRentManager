@@ -9,6 +9,7 @@ import com.asdeire.autorent.persistence.repository.contracts.ReviewRepository;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
+import org.fusesource.jansi.AnsiConsole;
 
 public class CategoryService {
 

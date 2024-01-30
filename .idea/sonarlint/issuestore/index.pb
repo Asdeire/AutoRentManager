@@ -188,3 +188,7 @@ i
 9src/com/asdeire/autorent/domain/impl/CategoryService.java,9\e\9e529214ccf8e0e31a97ed407c5ae8f6d2c94606
 U
 %src/com/asdeire/autorent/Startup.java,c\5\c5fd22f309318d34698a40bccf4b9e6fc8d9b474
+^
+.src/com/asdeire/autorent/appui/Rendarable.java,0\f\0fbd083db1c2ad4274baf34a4b5b591afee3f308
+\
+,src/com/asdeire/autorent/appui/AuthView.java,0\2\0259c0ba5251c973f8fb146a8b880c903bbc1af9

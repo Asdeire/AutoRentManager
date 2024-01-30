@@ -10,6 +10,7 @@ import com.asdeire.autorent.domain.exception.SignUpException;
 import com.asdeire.autorent.domain.impl.AuthServiceImpl;
 import com.asdeire.autorent.domain.impl.CategoryService;
 import com.asdeire.autorent.domain.impl.SignUpService;
+import com.asdeire.autorent.persistence.repository.RepositoryFactory;
 import de.codeshelf.consoleui.prompt.ConsolePrompt;
 import de.codeshelf.consoleui.prompt.InputResult;
 import de.codeshelf.consoleui.prompt.ListResult;
@@ -22,16 +23,17 @@ import java.util.function.Supplier;
 import org.fusesource.jansi.AnsiConsole;
 
 
-public class AuthView implements Rendarable{
+public class AuthView implements Rendarable {
+
     private final AuthServiceImpl authServiceImpl;
-    private final CategoryService categoryService;
+    private final CategoryView categoryView;
     private final SignUpService signUpService;
 
     public AuthView(AuthServiceImpl authServiceImpl,
-        CategoryService categoryService,
-        SignUpService signUpService){
+        CategoryView categoryView,
+        SignUpService signUpService) {
         this.authServiceImpl = authServiceImpl;
-        this.categoryService = categoryService;
+        this.categoryView = categoryView;
         this.signUpService = signUpService;
     }
 
@@ -53,143 +55,6 @@ public class AuthView implements Rendarable{
         }
     }
 
-
-    private void process(AuthMenu selectedItem,
-        CategoryService categoryService,
-        SignUpService signUpService) throws IOException {
-        ConsolePrompt prompt = new ConsolePrompt();
-        PromptBuilder promptBuilder = prompt.getPromptBuilder();
-
-
-        switch (selectedItem) {
-            case SIGN_IN -> {
-                promptBuilder.createInputPrompt()
-                    .name("username")
-                    .message("Впишіть ваш логін: ")
-                    .addPrompt();
-                promptBuilder.createInputPrompt()
-                    .name("password")
-                    .message("Впишіть ваш пароль: ")
-                    .mask('*')
-                    .addPrompt();
-
-                var result = prompt.prompt(promptBuilder.build());
-                var usernameInput = (InputResult) result.get("username");
-                var passwordInput = (InputResult) result.get("password");
-
-                try {
-                    boolean authenticate = authServiceImpl.authenticate(
-                        usernameInput.getInput(),
-                        passwordInput.getInput()
-                    );
-                    clearScreen();
-                    System.out.printf("%s %n", authenticate);
-                    categoryService.chooseCategory();
-                } catch (AuthException e) {
-                    System.err.println("Невірно введений пароль чи логін!");
-                    clearScreen();
-                    Startup.init();
-                }
-
-
-            }
-            case SIGN_UP -> {
-                promptBuilder.createInputPrompt()
-                    .name("username")
-                    .message("Впишіть ваш логін: ")
-                    .addPrompt();
-                promptBuilder.createInputPrompt()
-                    .name("password")
-                    .message("Впишіть ваш пароль: ")
-                    .mask('*')
-                    .addPrompt();
-                promptBuilder.createInputPrompt()
-                    .name("email")
-                    .message("Впишіть ваш email: ")
-                    .addPrompt();
-
-                var result = prompt.prompt(promptBuilder.build());
-                var usernameInput = (InputResult) result.get("username");
-                var passwordInput = (InputResult) result.get("password");
-                var emailInput = (InputResult) result.get("email");
-
-                String username = usernameInput.getInput();
-                String password = passwordInput.getInput();
-                String email = emailInput.getInput();
-
-                System.out.println("На вашу пошту надіслано код підтвердження");
-
-                try {
-                    signUpService.signUp(username, password, email, 1000,
-
-                            /*Scanner scanner = new Scanner(System.in);
-                            System.out.print("Введіть код підтвердження: ");
-                            return scanner.nextLine();*/
-                            getCodeFromUserInput()
-
-                        );
-                    clearScreen();
-                    System.out.println("Користувача було успішно додано!");
-                    Startup.init();
-                } catch (SignUpException e) {
-                    System.err.println("Спробуйте знову");
-                    clearScreen();
-                    Startup.init();
-                }
-            }
-            case EXIT -> {
-
-            }
-            default -> {
-
-            }
-        }
-    }
-
-    @Override
-    public void render() throws IOException {
-        AnsiConsole.systemInstall();
-
-        ConsolePrompt prompt = new ConsolePrompt();
-        PromptBuilder promptBuilder = prompt.getPromptBuilder();
-
-        promptBuilder.createListPrompt()
-            .name("auth-menu")
-            .message("Оренда автомобілів")
-            .newItem(SIGN_IN.toString()).text(SIGN_IN.getName()).add()
-            .newItem(SIGN_UP.toString()).text(SIGN_UP.getName()).add()
-            .newItem(EXIT.toString()).text(EXIT.getName()).add()
-            .addPrompt();
-
-        var result = prompt.prompt(promptBuilder.build());
-        ListResult resultItem = (ListResult) result.get("auth-menu");
-
-        AuthMenu selectedItem = AuthMenu.valueOf(resultItem.getSelectedId());
-        process(selectedItem, categoryService, signUpService);
-    }
-
-
-    enum AuthMenu {
-        SIGN_IN("Авторизація"),
-        SIGN_UP("Стоврити обліковий аккаунт"),
-        EXIT("Вихід");
-
-        private final String name;
-
-        AuthMenu(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
-    private void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     private static Supplier<String> getCodeFromUserInput() {
         return () -> {
             ConsolePrompt prompt = new ConsolePrompt();
@@ -208,5 +73,158 @@ public class AuthView implements Rendarable{
             var codeInput = (InputResult) userResult.get("code");
             return codeInput.getInput();
         };
+    }
+
+    private void process(AuthMenu selectedItem) throws IOException {
+
+
+        switch (selectedItem) {
+            case SIGN_IN -> openAuth();
+            case SIGN_UP -> openSignUp();
+            case EXIT -> {}
+            default -> {}
+        }
+    }
+
+    @Override
+    public void render() throws IOException {
+        AnsiConsole.systemInstall();
+
+        printWelcome();
+
+        ConsolePrompt prompt = new ConsolePrompt();
+        PromptBuilder promptBuilder = prompt.getPromptBuilder();
+
+        promptBuilder.createListPrompt()
+            .name("auth-menu")
+            .message("Оренда автомобілів")
+            .newItem(SIGN_IN.toString()).text(SIGN_IN.getName()).add()
+            .newItem(SIGN_UP.toString()).text(SIGN_UP.getName()).add()
+            .newItem(EXIT.toString()).text(EXIT.getName()).add()
+            .addPrompt();
+
+        var result = prompt.prompt(promptBuilder.build());
+        ListResult resultItem = (ListResult) result.get("auth-menu");
+
+        AuthMenu selectedItem = AuthMenu.valueOf(resultItem.getSelectedId());
+        process(selectedItem);
+    }
+
+    private void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    private void openAuth() {
+        ConsolePrompt prompt = new ConsolePrompt();
+        PromptBuilder promptBuilder = prompt.getPromptBuilder();
+        promptBuilder.createInputPrompt()
+            .name("username")
+            .message("Впишіть ваш логін: ")
+            .addPrompt();
+        promptBuilder.createInputPrompt()
+            .name("password")
+            .message("Впишіть ваш пароль: ")
+            .mask('*')
+            .addPrompt();
+
+        HashMap<String, ? extends PromtResultItemIF> result = null;
+        try {
+            result = prompt.prompt(promptBuilder.build());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        var usernameInput = (InputResult) result.get("username");
+        var passwordInput = (InputResult) result.get("password");
+
+        try {
+            boolean authenticate = authServiceImpl.authenticate(
+                usernameInput.getInput(),
+                passwordInput.getInput()
+            );
+            clearScreen();
+            printWelcome();
+            System.out.printf(authServiceImpl.getUser().getUsername());
+            categoryView.render();
+        } catch (AuthException e) {
+            clearScreen();
+            System.err.println("Невірно введений пароль чи логін!");
+            openAuth();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void openSignUp() {
+        clearScreen();
+        ConsolePrompt prompt = new ConsolePrompt();
+        PromptBuilder promptBuilder = prompt.getPromptBuilder();
+        promptBuilder.createInputPrompt()
+            .name("username")
+            .message("Впишіть ваш логін: ")
+            .addPrompt();
+        promptBuilder.createInputPrompt()
+            .name("password")
+            .message("Впишіть ваш пароль: ")
+            .mask('*')
+            .addPrompt();
+        promptBuilder.createInputPrompt()
+            .name("email")
+            .message("Впишіть ваш email: ")
+            .addPrompt();
+
+        HashMap<String, ? extends PromtResultItemIF> result = null;
+        try {
+            result = prompt.prompt(promptBuilder.build());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        var usernameInput = (InputResult) result.get("username");
+        var passwordInput = (InputResult) result.get("password");
+        var emailInput = (InputResult) result.get("email");
+
+        String username = usernameInput.getInput();
+        String password = passwordInput.getInput();
+        String email = emailInput.getInput();
+
+        if(!signUpService.validatedPassword(password)){
+            clearScreen();
+            System.err.println("Пароль не відповдіє вимогам, спробуйте знову!");
+            openAuth();
+        }
+        else {
+            System.out.println("На вашу пошту надіслано код підтвердження");
+
+            try {
+                signUpService.signUp(username, password, email, 1000, getCodeFromUserInput());
+                RepositoryFactory jsonRepositoryFactory = RepositoryFactory
+                    .getRepositoryFactory(RepositoryFactory.JSON);
+                jsonRepositoryFactory.commit();
+                clearScreen();
+                System.out.println("Користувача було успішно додано!");
+                Startup.init();
+            } catch (SignUpException e) {
+                System.err.println("Пароль, має містити мінімум 8 символів, та масимум 32!");
+                clearScreen();
+                openSignUp();
+            }
+        }
+    }
+
+    enum AuthMenu {
+        SIGN_IN("Авторизація"),
+        SIGN_UP("Стоврити обліковий аккаунт"),
+        EXIT("Вихід");
+
+        private final String name;
+
+        AuthMenu(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }

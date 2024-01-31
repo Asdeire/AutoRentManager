@@ -1,13 +1,26 @@
 
-g	java:S112#"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8’¢—¯Õ1
+g	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8üÉ·âÕ1
+g	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8üÉ·âÕ1
+h	java:S112‰"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8üÉ·âÕ1
+h	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8üÉ·âÕ1
+h	java:S112º"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ë›¹âÕ1
+l
+java:S1192€"IDefine a constant instead of duplicating this literal "password" 4 times.(ïÜ£–ıÿÿÿÿ8ıÉ·âÕ1
+k
+java:S1192|"IDefine a constant instead of duplicating this literal "username" 4 times.(–ÕÏ‰ÿÿÿÿÿ8ıÉ·âÕ1
 T
-java:S6126"2Replace this String concatenation with Text block.(¥³Šıÿÿÿÿ8 ¢—¯Õ1
+java:S6126)"2Replace this String concatenation with Text block.(¥³Šıÿÿÿÿ8‰Ê·âÕ1
 {
-java:S2142""^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8¡¢—¯Õ1
-9
-java:S6205I"Remove this redundant block.(Ã·ä´8Ô×¯Õ1
-J	java:S108L")Either remove or fill this block of code.(ıÉçøÿÿÿÿ8Ô×¯Õ1
-E	java:S108O")Either remove or fill this block of code.(üØô8Ô×¯Õ1
-]	java:S125z"<This block of commented-out lines of code should be removed.(éªå¾üÿÿÿÿ8§¢—¯Õ1
-S
-java:S1144·"0Remove this unused private "clearScreen" method.(ÛÌ¾ûÿÿÿÿ8ôÿ ¯Õ1
+java:S21424"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8‰Ê·âÕ1
+
+java:S1130N"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(É³ùÇÿÿÿÿÿ8Ê·âÕ1
+J	java:S108T")Either remove or fill this block of code.(ş¼èúÿÿÿÿ8Ê·âÕ1
+E	java:S108U")Either remove or fill this block of code.(”ì­è8Ê·âÕ1
+^
+java:S1854"@Remove this useless assignment to local variable "authenticate".(Äğş˜8Šœ½âÕ1
+O
+java:S1481"1Remove this unused "authenticate" local variable.(Äğş˜8‹œ½âÕ1
+o
+java:S1128"MRemove this unused import 'com.asdeire.autorent.domain.impl.CategoryService'.(Ù®Òøÿÿÿÿ8åû™äÕ1
+P
+java:S1128".Remove this unused import 'java.util.Scanner'.(ÒÜÅ¸úÿÿÿÿ8æû™äÕ1

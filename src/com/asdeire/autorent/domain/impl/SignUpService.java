@@ -1,6 +1,7 @@
 package com.asdeire.autorent.domain.impl;
 
 import com.asdeire.autorent.Startup;
+import com.asdeire.autorent.appui.AuthView;
 import com.asdeire.autorent.domain.exception.SignUpException;
 import com.asdeire.autorent.persistence.entity.ErrorTemplates;
 import com.asdeire.autorent.persistence.entity.impl.User;
@@ -144,11 +145,9 @@ public class SignUpService {
     }
 
     public boolean validatedPassword(String password) {
-
         if (password.length() < 8) {
             return false;
         }
-
         return true;
     }
 

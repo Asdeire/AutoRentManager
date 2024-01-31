@@ -1,7 +1,9 @@
 
 k
-java:S11921"NDefine a constant instead of duplicating this literal "\033[H\033[2J" 3 times.(Îœò—8ş§÷Õ1
+java:S11922"NDefine a constant instead of duplicating this literal "\033[H\033[2J" 3 times.(Îœò—8’Ü‡ŞÕ1
 w
-java:S2259G"U"NullPointerException" will be thrown when invoking method "displayVehicleDetails()".(ô­Äÿùÿÿÿÿ8…©÷Õ1
+java:S2259H"U"NullPointerException" will be thrown when invoking method "displayVehicleDetails()".(ô­Äÿùÿÿÿÿ8İ‡ŞÕ1
 V
-java:S2130*"9Use "Integer.parseInt" for this string-to-int conversion.(ş¶Ü³8Œ©÷Õ1
+java:S2130+"9Use "Integer.parseInt" for this string-to-int conversion.(ş¶Ü³8“İ‡ŞÕ1
+Z
+java:S1128"=Remove this unused import 'org.fusesource.jansi.AnsiConsole'.(´ˆ‚8¹âŞÕ1

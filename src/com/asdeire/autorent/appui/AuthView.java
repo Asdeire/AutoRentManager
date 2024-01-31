@@ -37,6 +37,8 @@ public class AuthView implements Rendarable {
         this.signUpService = signUpService;
     }
 
+
+
     public static void printWelcome() {
         String art = "    ___         __        ____             __ \n"
             + "   /   | __  __/ /_____  / __ \\___  ____  / /_\n"
@@ -81,7 +83,7 @@ public class AuthView implements Rendarable {
         switch (selectedItem) {
             case SIGN_IN -> openAuth();
             case SIGN_UP -> openSignUp();
-            case EXIT -> {}
+            case EXIT -> {System.exit(0);}
             default -> {}
         }
     }
@@ -108,6 +110,8 @@ public class AuthView implements Rendarable {
 
         AuthMenu selectedItem = AuthMenu.valueOf(resultItem.getSelectedId());
         process(selectedItem);
+
+
     }
 
     private void clearScreen() {
@@ -143,6 +147,10 @@ public class AuthView implements Rendarable {
                 usernameInput.getInput(),
                 passwordInput.getInput()
             );
+            if (authServiceImpl.isAuthenticated()) {
+                categoryView.setUserCategory(authServiceImpl.getUser());
+                categoryView.setCategoryView(categoryView);
+            }
             clearScreen();
             printWelcome();
             System.out.printf(authServiceImpl.getUser().getUsername());
@@ -187,6 +195,12 @@ public class AuthView implements Rendarable {
         String username = usernameInput.getInput();
         String password = passwordInput.getInput();
         String email = emailInput.getInput();
+
+        try {
+            signUpService.validatedPassword(password);
+        }catch (NullPointerException e){
+            openSignUp();
+        }
 
         if(!signUpService.validatedPassword(password)){
             clearScreen();

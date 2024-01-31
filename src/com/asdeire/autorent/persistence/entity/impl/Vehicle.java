@@ -12,6 +12,14 @@ import java.util.List;
 import java.util.UUID;
 import java.nio.file.Path;
 
+/**
+ * Represents a vehicle in the autorent system.
+ *
+ * <p>
+ * This class stores information about vehicles, including their unique identifier,
+ * name, price, description, and category.
+ * </p>
+ */
 public class Vehicle extends Entity {
 
     private Category category;
@@ -19,6 +27,15 @@ public class Vehicle extends Entity {
     private int price;
     private String description;
 
+    /**
+     * Constructs a new Vehicle instance.
+     *
+     * @param id          The unique identifier for the vehicle.
+     * @param name        The name of the vehicle.
+     * @param price       The price of the vehicle.
+     * @param description The description of the vehicle.
+     * @param category    The category of the vehicle.
+     */
     public Vehicle(UUID id, String name, int price, String description, Category category) {
         super(id);
         this.name = name;
@@ -27,6 +44,12 @@ public class Vehicle extends Entity {
         this.category = category;
     }
 
+    /**
+     * Reads a list of vehicles from a JSON file.
+     *
+     * @param filePath The path to the JSON file.
+     * @return The list of vehicles read from the JSON file.
+     */
     public static List<Vehicle> readVehiclesFromJsonFile(Path filePath) {
         try (FileReader reader = new FileReader(filePath.toFile())) {
             Gson gson = new GsonBuilder()
@@ -42,23 +65,39 @@ public class Vehicle extends Entity {
         }
     }
 
+    /**
+     * Gets the name of the vehicle.
+     *
+     * @return The name of the vehicle.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the price of the vehicle.
+     *
+     * @return The price of the vehicle.
+     */
     public int getPrice() {
         return price;
     }
 
+    /**
+     * Gets the description of the vehicle.
+     *
+     * @return The description of the vehicle.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Gets the category of the vehicle.
+     *
+     * @return The category of the vehicle.
+     */
     public Category getCategory() {
         return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 }

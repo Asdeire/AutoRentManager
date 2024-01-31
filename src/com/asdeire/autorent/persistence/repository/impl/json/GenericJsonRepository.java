@@ -6,6 +6,7 @@ import com.asdeire.autorent.persistence.repository.Repository;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
@@ -18,6 +19,11 @@ import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * Generic implementation of the Repository interface for managing entities using JSON files.
+ *
+ * @param <E> the type of entity managed by the repository
+ */
 public class GenericJsonRepository<E extends Entity> implements Repository<E> {
 
     protected final Set<E> entities;
@@ -25,6 +31,13 @@ public class GenericJsonRepository<E extends Entity> implements Repository<E> {
     private final Path path;
     private final Type collectionType;
 
+    /**
+     * Constructs a GenericJsonRepository.
+     *
+     * @param gson           Gson instance for JSON serialization and deserialization
+     * @param path           Path to the JSON file
+     * @param collectionType Type of the collection of entities
+     */
     public GenericJsonRepository(Gson gson, Path path, Type collectionType) {
         this.gson = gson;
         this.path = path;
@@ -59,6 +72,11 @@ public class GenericJsonRepository<E extends Entity> implements Repository<E> {
         return entities.remove(entity);
     }
 
+    /**
+     * Gets the path to the JSON file.
+     *
+     * @return the path to the JSON file
+     */
     public Path getPath() {
         return path;
     }
@@ -69,16 +87,16 @@ public class GenericJsonRepository<E extends Entity> implements Repository<E> {
             var json = Files.readString(path);
             return isValidJson(json) ? gson.fromJson(json, collectionType) : new HashSet<>();
         } catch (IOException e) {
-            throw new JsonFileIOException("Помилка при роботі із файлом %s."
+            throw new JsonFileIOException("Error working with file %s."
                 .formatted(path.getFileName()));
         }
     }
 
     /**
-     * Перевірка на валідність формату даних JSON.
+     * Checks the validity of the JSON data format.
      *
-     * @param input JSON у форматі рядка.
-     * @return результат перевірки.
+     * @param input JSON data in string format
+     * @return the result of the validation
      */
     private boolean isValidJson(String input) {
         try (JsonReader reader = new JsonReader(new StringReader(input))) {
@@ -90,9 +108,9 @@ public class GenericJsonRepository<E extends Entity> implements Repository<E> {
     }
 
     /**
-     * Якщо файлу не існує, то ми його створюємо.
+     * If the file does not exist, it is created.
      *
-     * @throws IOException виключення при роботі із потоком вводу виводу.
+     * @throws IOException exception when working with input/output stream
      */
     private void fileNotFound() throws IOException {
         if (!Files.exists(path)) {

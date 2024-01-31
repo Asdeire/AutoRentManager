@@ -2,6 +2,15 @@ package com.asdeire.autorent.persistence.exception;
 
 import java.util.List;
 
+/**
+ * Exception thrown when an entity encounters invalid arguments during validation.
+ *
+ * <p>
+ * This exception is typically used to indicate that an entity has failed validation due
+ * to invalid arguments or constraints. It holds a list of error messages describing the
+ * validation issues with the entity fields.
+ * </p>
+ */
 public class EntityArgumentException extends IllegalArgumentException {
 
     /**

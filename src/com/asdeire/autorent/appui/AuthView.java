@@ -20,7 +20,14 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 import org.fusesource.jansi.AnsiConsole;
 
-
+/**
+ * The {@code AuthView} class represents the user interface for authentication and sign-up in the car rental application.
+ * It includes methods for rendering the authentication menu, handling user input, and interacting with the authentication
+ * and sign-up services.
+ *
+ * @author Asdeire
+ * @version 1.0
+ */
 public class AuthView implements Rendarable {
 
     private final AuthServiceImpl authServiceImpl;
@@ -36,7 +43,9 @@ public class AuthView implements Rendarable {
     }
 
 
-
+    /**
+     * Prints the welcome ASCII art when the application starts.
+     */
     public static void printWelcome() {
         String art = "    ___         __        ____             __ \n"
             + "   /   | __  __/ /_____  / __ \\___  ____  / /_\n"
@@ -55,6 +64,11 @@ public class AuthView implements Rendarable {
         }
     }
 
+    /**
+     * Returns a {@code Supplier<String>} for obtaining the verification code from the user's input.
+     *
+     * @return A {@code Supplier<String>} for obtaining the verification code.
+     */
     private static Supplier<String> getCodeFromUserInput() {
         return () -> {
             ConsolePrompt prompt = new ConsolePrompt();
@@ -75,6 +89,12 @@ public class AuthView implements Rendarable {
         };
     }
 
+    /**
+     * Processes the selected item from the authentication menu.
+     *
+     * @param selectedItem The selected item from the authentication menu.
+     * @throws IOException If an I/O error occurs.
+     */
     private void process(AuthMenu selectedItem) throws IOException {
 
 
@@ -86,6 +106,11 @@ public class AuthView implements Rendarable {
         }
     }
 
+    /**
+     * Renders the authentication view by displaying the welcome message and authentication menu.
+     *
+     * @throws IOException If an I/O error occurs.
+     */
     @Override
     public void render() throws IOException {
         AnsiConsole.systemInstall();
@@ -112,11 +137,17 @@ public class AuthView implements Rendarable {
 
     }
 
+    /**
+     * Clears the console screen.
+     */
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    /**
+     * Opens the authentication view, allowing users to enter their username and password for authentication.
+     */
     private void openAuth() {
         ConsolePrompt prompt = new ConsolePrompt();
         PromptBuilder promptBuilder = prompt.getPromptBuilder();
@@ -162,6 +193,9 @@ public class AuthView implements Rendarable {
         }
     }
 
+    /**
+     * Opens the sign-up view, allowing users to create a new account with a username, password, and email.
+     */
     private void openSignUp() {
         clearScreen();
         ConsolePrompt prompt = new ConsolePrompt();
@@ -224,6 +258,9 @@ public class AuthView implements Rendarable {
         }
     }
 
+    /**
+     * Enumeration representing the authentication menu options.
+     */
     enum AuthMenu {
         SIGN_IN("Авторизація"),
         SIGN_UP("Стоврити обліковий аккаунт"),

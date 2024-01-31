@@ -19,22 +19,39 @@ import java.util.UUID;
 import java.util.function.Supplier;
 import org.mindrot.bcrypt.BCrypt;
 
+/**
+ * The {@code SignUpService} class provides services related to user sign-up and verification in the car rental application.
+ * It includes methods for generating and sending verification codes, verifying user input codes, and handling user sign-up.
+ *
+ * @author Asdeire
+ * @version 1.0
+ */
 public class SignUpService {
 
     private static final int VERIFICATION_CODE_EXPIRATION_MINUTES = 1;
     private static LocalDateTime codeCreationTime;
     private final UserRepository userRepository;
 
+    /**
+     * Constructs a new instance of {@code SignUpService} with the specified user repository.
+     *
+     * @param userRepository The repository for managing user data.
+     */
     public SignUpService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    // відправлення на пошту
+    /**
+     * Sends a verification code via email to the specified email address.
+     *
+     * @param email           The email address to send the verification code.
+     * @param verificationCode The generated verification code.
+     */
     private static void sendVerificationCodeEmail(String email, String verificationCode) {
         // Властивості для конфігурації підключення до поштового сервера
         Properties properties = new Properties();
-        properties.put("mail.smtp.host", "sandbox.smtp.mailtrap.io"); // Замініть на власний
-        properties.put("mail.smtp.port", "2525"); // Замініть на власний SMTP порт
+        properties.put("mail.smtp.host", "sandbox.smtp.mailtrap.io");
+        properties.put("mail.smtp.port", "2525");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
 
@@ -74,6 +91,12 @@ public class SignUpService {
         }
     }
 
+    /**
+     * Generates and sends a verification code to the specified email address.
+     *
+     * @param email The email address for which the verification code is generated and sent.
+     * @return The generated verification code.
+     */
     public static String generateAndSendVerificationCode(String email) {
         // Генерація 6-значного коду
         String verificationCode = String.valueOf((int) (Math.random() * 900000 + 100000));
@@ -85,7 +108,13 @@ public class SignUpService {
         return verificationCode;
     }
 
-    // Перевірка введеного коду
+    /**
+     * Verifies the input verification code against the generated code and checks for expiration.
+     *
+     * @param inputCode      The user-input verification code.
+     * @param generatedCode  The generated verification code.
+     * @throws SignUpException If the code is expired or incorrect.
+     */
     public static void verifyCode(String inputCode, String generatedCode) {
         LocalDateTime currentTime = LocalDateTime.now();
         long minutesElapsed = ChronoUnit.MINUTES.between(codeCreationTime, currentTime);
@@ -102,6 +131,15 @@ public class SignUpService {
         codeCreationTime = null;
     }
 
+    /**
+     * Signs up a new user with the specified details.
+     *
+     * @param username           The username of the new user.
+     * @param password           The password of the new user.
+     * @param email              The email address of the new user.
+     * @param balance            The initial balance of the new user.
+     * @param waitForUserInput   A supplier for waiting for user input.
+     */
     public void signUp(String username,
         String password,
         String email,
@@ -110,6 +148,16 @@ public class SignUpService {
         signUp(username, password, email, balance, Role.GENERAL, waitForUserInput);
     }
 
+    /**
+     * Signs up a new user with the specified details and role.
+     *
+     * @param username           The username of the new user.
+     * @param password           The password of the new user.
+     * @param email              The email address of the new user.
+     * @param balance            The initial balance of the new user.
+     * @param role               The role of the new user.
+     * @param waitForUserInput   A supplier for waiting for user input.
+     */
     public void signUp(String username,
         String password,
         String email,
@@ -138,6 +186,12 @@ public class SignUpService {
         }
     }
 
+    /**
+     * Validates the password based on certain criteria.
+     *
+     * @param password The password to be validated.
+     * @return {@code true} if the password is valid; {@code false} otherwise.
+     */
     public boolean validatedPassword(String password) {
         if (password.length() < 8) {
             return false;

@@ -21,6 +21,14 @@ import java.util.HashMap;
 import java.util.List;
 import org.fusesource.jansi.AnsiConsole;
 
+/**
+ * The {@code CategoryView} class represents the user interface for viewing and selecting vehicle categories in the car rental application.
+ * It provides methods for rendering the category menu, displaying details of vehicles in a selected category, and handling user input
+ * to initiate the vehicle rental process.
+ *
+ * @author Asdeire
+ * @version 1.0
+ */
 public class CategoryView implements Rendarable {
 
     Path filePath = Path.of("data/vehicles.json");
@@ -46,6 +54,13 @@ public class CategoryView implements Rendarable {
         this.reviewRepository = reviewRepository;
     }
 
+    /**
+     * Processes the selected item from the category menu and displays details of vehicles in the selected category.
+     *
+     * @param selectedItem   The selected item from the category menu.
+     * @param inputCategory  The category selected by the user.
+     * @throws IOException  If an I/O error occurs.
+     */
     private void process(CategoryMenu selectedItem, String inputCategory) throws IOException {
         switch (selectedItem) {
             case SUV -> inputCategory = "SUV";
@@ -69,6 +84,11 @@ public class CategoryView implements Rendarable {
         getCarByNumber(vehicleNumber, inputCategory, selectedItem);
     }
 
+    /**
+     * Renders the category menu for selecting a vehicle category.
+     *
+     * @throws IOException If an I/O error occurs during rendering.
+     */
     @Override
     public void render() throws IOException {
         AnsiConsole.systemInstall();
@@ -78,6 +98,7 @@ public class CategoryView implements Rendarable {
 
         promptBuilder.createListPrompt()
             .name("category-menu")
+            .message("Вибір категорії")
             .newItem(SEDAN.toString()).text(SEDAN.getName()).add()
             .newItem(SUV.toString()).text(SUV.getName()).add()
             .newItem(HATCHBACK.toString()).text(HATCHBACK.getName()).add()
@@ -92,6 +113,11 @@ public class CategoryView implements Rendarable {
         process(selectedItem, inputCategory);
     }
 
+    /**
+     * Displays details of a given vehicle.
+     *
+     * @param vehicle  The vehicle for which details will be displayed.
+     */
     private void displayVehicleDetails(Vehicle vehicle) {
         System.out.println("Name: " + vehicle.getName());
         System.out.println("Price: " + vehicle.getPrice() + "$/day");
@@ -100,6 +126,14 @@ public class CategoryView implements Rendarable {
         System.out.println("--------------");
     }
 
+    /**
+     * Initiates the vehicle rental process based on the user's selected vehicle number.
+     *
+     * @param vehicleNumber  The total number of vehicles in the selected category.
+     * @param inputCategory  The category selected by the user.
+     * @param selectedItem   The selected item from the category menu.
+     * @throws IOException  If an I/O error occurs.
+     */
     private void getCarByNumber(int vehicleNumber, String inputCategory, CategoryMenu selectedItem)
         throws IOException {
         ConsolePrompt prompt = new ConsolePrompt();
@@ -135,7 +169,13 @@ public class CategoryView implements Rendarable {
     }
 
 
-
+    /**
+     * Retrieves a vehicle based on its number in the specified category.
+     *
+     * @param category               The category of vehicles.
+     * @param selectedVehicleNumber The selected number of the vehicle.
+     * @return                       The selected vehicle.
+     */
     private Vehicle getVehicleByNumber(String category, int selectedVehicleNumber) {
         int count = 1;
         for (Vehicle vehicle : vehicles) {
@@ -149,11 +189,17 @@ public class CategoryView implements Rendarable {
         return null;
     }
 
+    /**
+     * Clears the console screen.
+     */
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
 
+    /**
+     * Enumeration representing the category menu options.
+     */
     enum CategoryMenu {
         SEDAN("Sedan"),
         SUV("SUV"),

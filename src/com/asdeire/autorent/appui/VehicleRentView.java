@@ -8,19 +8,39 @@ import de.codeshelf.consoleui.prompt.InputResult;
 import de.codeshelf.consoleui.prompt.builder.PromptBuilder;
 import java.io.IOException;
 
+/**
+ * The {@code VehicleRentView} class represents the user interface for renting vehicles in the car rental application.
+ * It provides methods for rendering the vehicle rental view, obtaining user input for the rental duration, confirming
+ * the rental choice, and displaying vehicle details.
+ *
+ * @author Asdeire
+ * @version 1.0
+ */
 public class VehicleRentView {
 
     private final User user;
     private final ReviewRepository reviewRepository;
     private final CategoryView categoryView;
 
-
+    /**
+     * Constructs a new instance of {@code VehicleRentView} with the specified user, review repository, and category view.
+     *
+     * @param user             The user renting the vehicle.
+     * @param reviewRepository The repository for managing reviews.
+     * @param categoryView     The category view associated with the rental.
+     */
     public VehicleRentView(User user, ReviewRepository reviewRepository, CategoryView categoryView) {
         this.user = user;
         this.reviewRepository = reviewRepository;
         this.categoryView = categoryView;
     }
 
+    /**
+     * Renders the vehicle rental view for the specified vehicle.
+     *
+     * @param vehicle The vehicle selected for rental.
+     * @throws IOException If an I/O error occurs during rendering.
+     */
     public void render(Vehicle vehicle) throws IOException {
         clearScreen();
         AuthView.printWelcome();
@@ -30,6 +50,12 @@ public class VehicleRentView {
         getNumberOfDays(vehicle);
     }
 
+    /**
+     * Obtains the number of rental days from the user and calculates the total cost.
+     *
+     * @param vehicle The vehicle selected for rental.
+     * @throws IOException If an I/O error occurs during input.
+     */
     private void getNumberOfDays(Vehicle vehicle) throws IOException {
         ConsolePrompt prompt = new ConsolePrompt();
         PromptBuilder promptBuilder = prompt.getPromptBuilder();
@@ -60,6 +86,13 @@ public class VehicleRentView {
         }
     }
 
+    /**
+     * Confirms the user's choice to rent the vehicle and adjusts the user's balance accordingly.
+     *
+     * @param totalCost The total cost of the rental.
+     * @param vehicle   The vehicle selected for rental.
+     * @throws IOException If an I/O error occurs during input.
+     */
     private void confirmChoice(int totalCost, Vehicle vehicle) throws IOException {
         ConsolePrompt prompt = new ConsolePrompt();
         PromptBuilder promptBuilder = prompt.getPromptBuilder();
@@ -87,6 +120,11 @@ public class VehicleRentView {
         }
     }
 
+    /**
+     * Displays details of the selected vehicle.
+     *
+     * @param vehicle The vehicle for which details will be displayed.
+     */
     private void displayVehicleDetails(Vehicle vehicle) {
         System.out.println("Name: " + vehicle.getName());
         System.out.println("Price: " + vehicle.getPrice());
@@ -95,6 +133,9 @@ public class VehicleRentView {
         System.out.println("--------------");
     }
 
+    /**
+     * Clears the console screen.
+     */
     private void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();

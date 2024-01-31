@@ -1,18 +1,12 @@
 package com.asdeire.autorent.appui;
 
-import com.asdeire.autorent.Startup;
-import com.asdeire.autorent.domain.impl.RentalService;
 import com.asdeire.autorent.persistence.entity.impl.User;
 import com.asdeire.autorent.persistence.entity.impl.Vehicle;
 import com.asdeire.autorent.persistence.repository.contracts.ReviewRepository;
-import de.codeshelf.consoleui.elements.ConfirmChoice;
 import de.codeshelf.consoleui.prompt.ConsolePrompt;
 import de.codeshelf.consoleui.prompt.InputResult;
-import de.codeshelf.consoleui.prompt.PromtResultItemIF;
 import de.codeshelf.consoleui.prompt.builder.PromptBuilder;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class VehicleRentView {
 

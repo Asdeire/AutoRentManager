@@ -7,7 +7,6 @@ import static com.asdeire.autorent.appui.CategoryView.CategoryMenu.SUV;
 import static com.asdeire.autorent.persistence.entity.impl.Vehicle.readVehiclesFromJsonFile;
 
 import com.asdeire.autorent.Startup;
-import com.asdeire.autorent.domain.impl.RentalService;
 import com.asdeire.autorent.persistence.entity.impl.User;
 import com.asdeire.autorent.persistence.entity.impl.Vehicle;
 import com.asdeire.autorent.persistence.repository.contracts.ReviewRepository;
@@ -20,8 +19,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
-import java.util.function.Supplier;
 import org.fusesource.jansi.AnsiConsole;
 
 public class CategoryView implements Rendarable {

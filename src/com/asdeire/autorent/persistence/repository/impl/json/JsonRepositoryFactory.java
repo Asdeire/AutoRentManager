@@ -5,7 +5,6 @@ import com.asdeire.autorent.persistence.exception.JsonFileIOException;
 import com.asdeire.autorent.persistence.repository.RepositoryFactory;
 import com.asdeire.autorent.persistence.repository.contracts.ReviewRepository;
 import com.asdeire.autorent.persistence.repository.contracts.UserRepository;
-import com.asdeire.autorent.persistence.repository.contracts.VehicleRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -23,9 +22,8 @@ import java.util.Set;
 public class JsonRepositoryFactory extends RepositoryFactory {
 
     private final Gson gson;
-    private VehicleJsonRepositoryImpl vehicleJsonRepositoryImpl;
-    private ReviewJsonRepositoryImpl reviewJsonRepositoryImpl;
-    private UserJsonRepositoryImpl userJsonRepositoryImpl;
+    private final ReviewJsonRepositoryImpl reviewJsonRepositoryImpl;
+    private final UserJsonRepositoryImpl userJsonRepositoryImpl;
 
     private JsonRepositoryFactory() {
         // Адаптер для типу даних LocalDateTime при серіалізації/десеріалізації
@@ -61,10 +59,7 @@ public class JsonRepositoryFactory extends RepositoryFactory {
         return InstanceHolder.INSTANCE;
     }
 
-    @Override
-    public VehicleRepository getVehicleRepository() {
-        return vehicleJsonRepositoryImpl;
-    }
+
 
     @Override
     public ReviewRepository getReviewRepository() {

@@ -2,12 +2,9 @@ package com.asdeire.autorent.persistence.entity.impl;
 
 
 import com.asdeire.autorent.persistence.entity.Entity;
-import com.asdeire.autorent.persistence.entity.ErrorTemplates;
-import com.asdeire.autorent.persistence.exception.EntityArgumentException;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 public class User extends Entity {
 

@@ -1,12 +1,8 @@
 package com.asdeire.autorent.domain.impl;
 
-import com.asdeire.autorent.Startup;
-import com.asdeire.autorent.appui.AuthView;
 import com.asdeire.autorent.domain.exception.SignUpException;
-import com.asdeire.autorent.persistence.entity.ErrorTemplates;
 import com.asdeire.autorent.persistence.entity.impl.User;
 import com.asdeire.autorent.persistence.entity.impl.User.Role;
-import com.asdeire.autorent.persistence.exception.EntityArgumentException;
 import com.asdeire.autorent.persistence.repository.contracts.UserRepository;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
@@ -19,10 +15,8 @@ import jakarta.mail.internet.MimeMessage;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Properties;
-import java.util.Scanner;
 import java.util.UUID;
 import java.util.function.Supplier;
-import java.util.regex.Pattern;
 import org.mindrot.bcrypt.BCrypt;
 
 public class SignUpService {

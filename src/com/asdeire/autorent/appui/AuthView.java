@@ -8,7 +8,6 @@ import com.asdeire.autorent.Startup;
 import com.asdeire.autorent.domain.exception.AuthException;
 import com.asdeire.autorent.domain.exception.SignUpException;
 import com.asdeire.autorent.domain.impl.AuthServiceImpl;
-import com.asdeire.autorent.domain.impl.CategoryService;
 import com.asdeire.autorent.domain.impl.SignUpService;
 import com.asdeire.autorent.persistence.repository.RepositoryFactory;
 import de.codeshelf.consoleui.prompt.ConsolePrompt;
@@ -18,7 +17,6 @@ import de.codeshelf.consoleui.prompt.PromtResultItemIF;
 import de.codeshelf.consoleui.prompt.builder.PromptBuilder;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.function.Supplier;
 import org.fusesource.jansi.AnsiConsole;
 

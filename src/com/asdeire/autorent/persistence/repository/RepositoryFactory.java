@@ -1,9 +1,7 @@
 package com.asdeire.autorent.persistence.repository;
 
-import com.asdeire.autorent.persistence.entity.impl.Vehicle;
 import com.asdeire.autorent.persistence.repository.contracts.ReviewRepository;
 import com.asdeire.autorent.persistence.repository.contracts.UserRepository;
-import com.asdeire.autorent.persistence.repository.contracts.VehicleRepository;
 import com.asdeire.autorent.persistence.repository.impl.json.JsonRepositoryFactory;
 import org.apache.commons.lang3.NotImplementedException;
 
@@ -24,7 +22,6 @@ public abstract class RepositoryFactory {
         };
     }
 
-    public abstract VehicleRepository getVehicleRepository();
 
     public abstract ReviewRepository getReviewRepository();
 
